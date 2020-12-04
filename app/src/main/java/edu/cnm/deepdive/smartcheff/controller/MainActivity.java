@@ -2,6 +2,7 @@ package edu.cnm.deepdive.smartcheff.controller;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import androidx.annotation.NonNull;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -19,7 +20,7 @@ import edu.cnm.deepdive.smartcheff.service.GoogleSignInService;
  */
 public class MainActivity extends AppCompatActivity {
 
-  ActivityMainBinding binding;
+ private ActivityMainBinding binding;
 
   @Override
   public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -35,6 +36,12 @@ public class MainActivity extends AppCompatActivity {
     return handled;
   }
 
+  @Override
+  public boolean onCreateOptionsMenu(Menu menu) {
+    // Inflate the menu; this adds items to the action bar if it is present.
+    getMenuInflater().inflate(R.menu.navigation, menu);
+    return true;
+  }
 
   @Override
   public boolean onSupportNavigateUp() {
@@ -42,7 +49,9 @@ public class MainActivity extends AppCompatActivity {
     return true;
   }
 
-
+  /**
+   * This method is the logic behind the logout function.
+   */
   private void logout() {
     GoogleSignInService.getInstance().signOut()
         .addOnCompleteListener((ignored) -> {
@@ -64,12 +73,13 @@ public class MainActivity extends AppCompatActivity {
     // Passing each menu ID as a set of Ids because each
     // menu should be considered as top level destinations.
     AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-        R.id.navigation_ingredient, R.id.navigation_recipes)
+        R.id.navigation_ingredient, R.id.navigation_recipes, R.id.navigation_current_recipe)
         .build();
     NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
     NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
     NavigationUI.setupWithNavController(navView, navController);
   }
+
 
 
 }

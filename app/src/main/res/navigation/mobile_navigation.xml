@@ -9,13 +9,63 @@
     android:id="@+id/navigation_ingredient"
     android:label="@string/title_ingredient"
     android:name="edu.cnm.deepdive.smartcheff.controller.ui.ingredientinput.IngredientFragment"
-    tools:layout="@layout/fragment_ingredient"/>
+    tools:layout="@layout/fragment_ingredient">
+
+    <action
+      android:id="@+id/search_recipes"
+      app:destination="@id/navigation_recipes">
+
+      <argument
+        android:name="ingredients_list"
+        app:argType="string[]"/>
+    </action>
+  </fragment>
 
   <fragment
     android:id="@+id/navigation_recipes"
     android:label="@string/title_recipes"
     android:name="edu.cnm.deepdive.smartcheff.controller.ui.recipes.RecipesFragment"
-    tools:layout="@layout/fragment_recipes"/>
+    tools:layout="@layout/fragment_recipes">
+
+    <argument
+      android:name="ingredients_list"
+      app:argType="string[]"
+      app:nullable="true"
+      android:defaultValue="@null"/>
+
+    <action
+      android:id="@+id/show_details"
+      app:destination="@id/navigation_current_recipe">
+
+      <argument
+        android:name="external_id"
+        app:argType="long"/>
+
+
+
+    </action>
+
+  </fragment>
+
+  <fragment
+    android:id="@+id/navigation_current_recipe"
+    android:label="Current Recipe"
+    android:name="edu.cnm.deepdive.smartcheff.controller.ui.recipes.CurrentRecipeFragment"
+    tools:layout="@layout/fragment_current_recipe">
+
+    <argument
+      android:name="external_id"
+      app:argType="long"
+      android:defaultValue="0L"/>
+
+  </fragment>
+
+<!--<fragment-->
+<!--  android:id="@+id/navigation_settings"-->
+<!--  android:label="@string/settings_title"-->
+<!--  android:name="edu.cnm.deepdive.smartcheff.controller.SettingsFragment"-->
+<!--  tools:layout="@xml/preferences"/>-->
+
 
 <!--  <fragment-->
 <!--    android:id="@+id/navigation_saved"-->

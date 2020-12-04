@@ -1,10 +1,8 @@
-#Documentation:
-
-## [Project introduction & description](../work/project_introduction_and_description.md)
+# Documentation:
 
 ## [Intended users](../work/intendedusers.md)
 
-##[Summary of current state](../work/summary.md)
+## [Summary of current state](../work/summary.md)
 
 ## [Wireframe diagram](../work/wireframe.md)
 
@@ -14,7 +12,7 @@
 
 ## [Technical requirements & dependencies](technical_requirements_dependencies.md)
 
-## [Java Docs](../api/allclasses.html)
+## [Java Docs](../api/overview-summary.html)
 
 ## [Copyrights & licenses](../notice.md)
 
